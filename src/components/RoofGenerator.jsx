@@ -5,26 +5,35 @@ export default function RoofGenerator() {
   const length = useHouseStore((s) => s.length)
   const height = useHouseStore((s) => s.height)
 
-  const roofHeight = height + 3
+  const roofPeak = height + 2.5
+  const wallTop = height
+
+  const halfWidth = width / 2
 
   return (
     <group>
-      {/* Left roof plane */}
+      {/* LEFT ROOF PLANE */}
       <mesh
-        position={[0, roofHeight, 0]}
-        rotation={[0, 0, 0.6]}
+        position={[0, roofPeak, 0]}
+        rotation={[0, 0, Math.PI / 6]}
       >
-        <boxGeometry args={[width, 0.2, length]} />
-        <meshStandardMaterial color="#7c2d12" />
+        <boxGeometry args={[width * 1.2, 0.2, length * 1.1]} />
+        <meshStandardMaterial color="#8b5a2b" />
       </mesh>
 
-      {/* Right roof plane */}
+      {/* RIGHT ROOF PLANE */}
       <mesh
-        position={[0, roofHeight, 0]}
-        rotation={[0, 0, -0.6]}
+        position={[0, roofPeak, 0]}
+        rotation={[0, 0, -Math.PI / 6]}
       >
-        <boxGeometry args={[width, 0.2, length]} />
-        <meshStandardMaterial color="#7c2d12" />
+        <boxGeometry args={[width * 1.2, 0.2, length * 1.1]} />
+        <meshStandardMaterial color="#8b5a2b" />
+      </mesh>
+
+      {/* RIDGE LINE (visual debug so you SEE it) */}
+      <mesh position={[0, roofPeak + 0.2, 0]}>
+        <boxGeometry args={[width, 0.1, 0.2]} />
+        <meshStandardMaterial color="red" />
       </mesh>
     </group>
   )

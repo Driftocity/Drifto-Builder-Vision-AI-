@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber"
+import { OrbitControls } from "@react-three/drei"
 
 function Box() {
   return (
@@ -11,11 +12,15 @@ function Box() {
 
 export default function HouseScene() {
   return (
-    <div style={{ height: "400px" }}>
+    <div style={{ height: "400px", width: "100%" }}>
       <Canvas camera={{ position: [3, 3, 3] }}>
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} />
+
         <Box />
+
+        {/* THIS IS WHAT YOU WERE MISSING */}
+        <OrbitControls />
       </Canvas>
     </div>
   )

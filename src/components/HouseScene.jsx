@@ -59,7 +59,7 @@ export default function HouseScene() {
 
         <Floor />
         <Walls />
-
+ <RoofGenerator />
         <OrbitControls />
       </Canvas>
     </div>
